@@ -1,7 +1,7 @@
 class WeatherModel {
-  final String mintemp;
-  final String maxtep;
-  final String avgtemp;
+  final double mintemp;
+  final double maxtep;
+  final double avgtemp;
   final String image;
   final String city;
   final String dateupdated;
