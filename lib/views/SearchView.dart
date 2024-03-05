@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/models/weathermodel.dart';
-import 'package:weatherapp/services/weatherservices.dart';
+import 'package:weatherapp/cubits/getweathercubit/getweathercubit.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
@@ -29,11 +28,9 @@ class SearchView extends StatelessWidget {
           left: 8.0,
         ),
         child: TextField(
-          onSubmitted: (cityname) async {
-            WeatherModel weatherModel = await WeatherServices().GetWeather(
-              cityname: cityname,
-            );
-            print(weatherModel.city);
+          onSubmitted: (cityname) {
+            WeatherCubit().getweather(cityname: cityname);
+            Navigator.pop(context);
           },
           decoration: const InputDecoration(
             border: OutlineInputBorder(
@@ -41,16 +38,6 @@ class SearchView extends StatelessWidget {
                 Radius.circular(20),
               ),
             ),
-            // enabledBorder: const OutlineInputBorder(
-            //   borderRadius: BorderRadius.all(
-            //     Radius.circular(20),
-            //   ),
-            // ),
-            // focusedBorder: const OutlineInputBorder(
-            //   borderRadius: BorderRadius.all(
-            //     Radius.circular(20),
-            //   ),
-            // ),
             contentPadding: EdgeInsets.all(25),
             hintText: 'Enter City Name',
             labelText: 'Search',
