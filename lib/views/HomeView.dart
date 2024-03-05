@@ -43,13 +43,15 @@ class _HomeViewState extends State<HomeView> {
         ],
       ),
       body: BlocBuilder<WeatherCubit, WeatherState>(
+        //to listen the cubit
+
         builder: (context, state) {
           if (state is NoWeatherInfoState) {
             return const NoWeatheView();
           } else if (state is WeatherInfoLoadedState) {
             return const WeatherInfoView();
           } else {
-            return const Text('There was an error');
+            return const Text('Opps there is an error');
           }
         },
       ),

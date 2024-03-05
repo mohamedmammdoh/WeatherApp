@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weatherapp/cubits/getweathercubit/getweathercubit.dart';
 
 class SearchView extends StatelessWidget {
@@ -29,7 +30,8 @@ class SearchView extends StatelessWidget {
         ),
         child: TextField(
           onSubmitted: (cityname) {
-            WeatherCubit().getweather(cityname: cityname);
+            var getweathercubit = BlocProvider.of<WeatherCubit>(context);
+            getweathercubit.getweather(cityname: cityname);
             Navigator.pop(context);
           },
           decoration: const InputDecoration(
